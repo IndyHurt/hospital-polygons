@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Create some school polygons</title>
+    <title>Create some hospital polygons</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -13,19 +13,19 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Polygon or Not', 'p_schools'],
-          ['Schools without Polygons', 2037],
-          ['Schools with Polygons',  529]
+          ['Hospitals without Polygons', 284],
+          ['Hospitals with Polygons',  64]
         ]);
 
         var options = {
-          title: 'Atlanta, School Polygons',
+          title: 'Los Angeles, Hospital Polygons',
           colors: ['aqua', 'grey']
         };
         
         var formatter1 = new google.visualization.NumberFormat({pattern:'###,###'});
         formatter1.format(data, 1);
         
-        var chart = new google.visualization.PieChart(document.getElementById('schools_piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('hospitals_piechart'));
 
         chart.draw(data, options);
       }
@@ -33,6 +33,6 @@
     
   </head>
   <body>
-	<div id="schools_piechart" style="width: 570px; height: 300px;"></div>
+	<div id="hospitals_piechart" style="width: 570px; height: 300px;"></div>
   </body>
 </html>
