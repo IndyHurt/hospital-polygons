@@ -4,7 +4,7 @@
 cameras:
     camera1:
         type: perspective
-        position: [-118.265022, 34.054156 , 12] # lon/lat for Westlake, Los Angeles at zoom 12 
+        position: [-118.265022, 34.054156 , 15] # lon/lat for Westlake, Los Angeles at zoom 15 
 
 labels-global:
     - &text_visible_continent         true
