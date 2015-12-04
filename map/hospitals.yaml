@@ -174,7 +174,7 @@ zinc-light-gray-colors:
         - &text_fill2        '#555'             # WHITE
         - &text_fill_building [0.3, 0.3, 0.3]   # WHITE
         - &text_fill_water   '#000'             # blue
-        - &text_fill_park    '#000'             # green
+        - &text_fill_park    '#555'             # green
         - &text_stroke       [0.8, 0.8, 0.8]    # land color
         - &text_stroke_water [0.8, 0.8, 0.8]    # water stroke color
         - &text_stroke_park  [0.8, 0.8, 0.8]    # park stroke color
@@ -711,38 +711,81 @@ layers:
         draw:
             icons:
                 size: [[13, 14px], [16, 16px], [19, 20px]]
-                sprite: hospital
+                sprite: clinic
                 interactive: true
                 order: 1000
                 color: white
+                visible: false
+                priority: 3
             text:
                 offset: [[13,13px],[14,15px],[16,19px]]
                 interactive: true
+                move_into_tile: true
+                priority: 4
                 font:
                     family: Helvetica
                     weight: 500
-                    fill: *text_fill
+                    style: italic
+                    fill: '#c45050'
                     size: 12px
-                    stroke: { color: white, width: 4 }
+                    stroke: { color: '#d7bbbb', width: 2 }
         no-area:
             filter:
                 area: false
             draw:
                 icons:
+                    sprite: hospital
                     color: aqua
-            text:
-                font:
-                    stroke: { color: '#00ffff', width: 4 }
+                    visible: true
+                    priority: 1
+                text:
+                    priority: 2
+                    font:
+                        fill: black
+                        stroke: { color: '#00ffff', width: 4 }
     hospital-landuse-aois:
-        data: { source: osm, layer: [landuse,buildings] }
+        data: { source: osm, layer: [landuse] }
         filter:
             any:
                 - kind: [hospital]
-                - landuse_kind: hospital
         draw:
             polygons:
-                color: '#bbd7d7'
-                order: 15
+                color: '#d7bbbb'
+                order: function() { if( $zoom < 17) { return 10; } else { return 8; } }
+    hospital-buildings-good:
+        data: { source: osm, layer: [buildings] }
+        filter:
+            any:
+                - landuse_kind: [hospital]
+        draw:
+            polygons:
+                color: '#bfadad'
+                order: function() { if( $zoom < 17) { return 14; } else { return 12; } }
+                #extrude: function() { return feature.height || 20; }
+            outline:
+                style: lines
+                order: 10
+                color: *building2
+                width: [[14,0.1px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.25m]]
+                #extrude: function() { return feature.height || 20; }
+    hospital-buildings-bad:
+        data: { source: osm, layer: [buildings] }
+        filter:
+            any:
+                - kind: [hospital]
+            not:
+                - landuse_kind: [hospital]
+        draw:
+            polygons:
+                color: '#dd7a7a'
+                order: function() { if( $zoom < 17) { return 14; } else { return 12; } }
+                #extrude: function() { return feature.height || 20; }
+            outline:
+                style: lines
+                order: 10
+                color: '#ff0000'
+                width: [[14,0.1px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.25m]]
+                #extrude: function() { return feature.height || 20; }
 
     # Map overlays for styling the server response (using special source layer names) for route line, find_me location gem, and search result pins
     route:
