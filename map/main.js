@@ -164,7 +164,7 @@ map = (function () {
                 popup.style.left = (pixel.x + 0) + 'px';
                 popup.style.top = (pixel.y + 0) + 'px';
                 
-                if ( scene.selection.feature.properties.name == undefined) {
+                if ( scene.selection.feature.properties.kind == 'hospital' && !scene.selection.feature.properties.area ) {
 	                popup.style.visibility = 'visible';
 	            }
                 popup.innerHTML = '<span class="labelInner">' + 'You found a hospital that needs help!' + '</span><br>';
