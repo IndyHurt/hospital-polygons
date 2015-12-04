@@ -729,7 +729,7 @@ layers:
                     fill: '#c45050'
                     size: 12px
                     stroke: { color: '#d7bbbb', width: 2 }
-        no-area:
+        matched:
             filter:
                 area: false
             draw:
