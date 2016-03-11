@@ -726,7 +726,7 @@ layers:
         draw:
             polygons:
                 color: '#d7bbbb'
-                order: function() { if( $zoom < 17) { return 10; } else { return 8; } }
+                order: 215
     hospital-buildings-good:
         data: { source: osm, layer: [buildings] }
         filter:
@@ -735,11 +735,11 @@ layers:
         draw:
             polygons:
                 color: '#bfadad'
-                order: function() { if( $zoom < 17) { return 14; } else { return 12; } }
+                order: 491
                 #extrude: function() { return feature.height || 20; }
             outline:
                 style: lines
-                order: 10
+                order: 492
                 color: *building2
                 width: [[14,0.1px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.25m]]
                 #extrude: function() { return feature.height || 20; }
@@ -753,11 +753,11 @@ layers:
         draw:
             polygons:
                 color: '#dd7a7a'
-                order: function() { if( $zoom < 17) { return 14; } else { return 12; } }
+                order: 491
                 #extrude: function() { return feature.height || 20; }
             outline:
                 style: lines
-                order: 10
+                order: 492
                 color: '#ff0000'
                 width: [[14,0.1px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.25m]]
                 #extrude: function() { return feature.height || 20; }
