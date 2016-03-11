@@ -693,7 +693,7 @@ layers:
                 visible: false
                 priority: 3
             text:
-                offset: [[13,13px],[14,15px],[16,19px]]
+                offset: [[13, [0, 6px]], [16, [0, 8px]], [18, [0, 10px]]] # offset tracks alongside icon size (half icon height)
                 interactive: false
                 move_into_tile: true
                 priority: 4
